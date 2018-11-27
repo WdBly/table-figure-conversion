@@ -8,6 +8,7 @@ var BUILD_PATH = path.resolve(ROOT_PATH, 'dist');
 var PROD_GLOBAL_CONFIG = require('../client/config/server.env.js');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
 module.exports = {
+    mode: "production",
     entry: {
         index: path.resolve(ROOT_PATH, 'client/index.jsx'),
         vendor: ['react', 'react-dom']
@@ -32,6 +33,27 @@ module.exports = {
                 })
             }
         ]
+    },
+    optimization: {
+        splitChunks: {
+            chunks: "all",
+            minSize: 20000,
+            minChunks: 1, 
+            name: true,
+            cacheGroups: {
+                commons: {
+                    name: 'common',
+                    priority: 10,
+                    chunks: 'initial'
+                },
+                vendors: {
+                    test: /[\\/]node_modules[\\/]/,
+                    priority: 20,
+                    name: "vendors",
+                    chunks: "all"
+                },
+            }
+        }
     },
     plugins: [
         new webpack.DefinePlugin(PROD_GLOBAL_CONFIG),
