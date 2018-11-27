@@ -4,15 +4,27 @@
     padding: 0;
 }
 
-.main-content {
+.root-content {
     padding: 25px;
+}
+
+.header-box-card {
+    margin: 0 25px 25px 0;
+
+    h2 {
+        margin: 0;
+    }
+}
+
+.main-content {
     display: flex;
+    flex-wrap: wrap;
 }
 
 .table-select-card {
     width: 30%;
     min-width: 360px;
-    height: 80vh;
+    height: 650px;
     margin-right: 25px;
 
     &.full-width {
@@ -20,7 +32,26 @@
     }
 }
 
+.generate-figure {
+    margin-top: 25px;
+    border-top: 1px solid #eee;
+    padding-top: 25px;
+
+    input {
+        margin-top: 10px;
+    }
+
+    .generate-figure-btn {
+        width: 100%;
+        margin-top: 10px;
+    }
+}
+
 .select-table-figure {
     width: 100%;
     margin-top: 15px;
+}
+
+.charts-box-card {
+    margin: 25px 25px 0 0;
 }
