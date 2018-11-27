@@ -17,12 +17,10 @@ const compiler = webpack(webpack_config);
 
 var publicPath = "";
 
-app.use(historyApiFallback());
-
 app.use(bodyParser());
 
 if(process.env.NODE_ENV === "development") {
-
+    app.use(historyApiFallback());
     publicPath = path.resolve(__dirname,"./template");
 
     app.use(devMiddleware(compiler,{
