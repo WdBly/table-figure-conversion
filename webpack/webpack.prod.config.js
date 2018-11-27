@@ -10,8 +10,7 @@ var HtmlWebpackPlugin = require('html-webpack-plugin');
 module.exports = {
     mode: "production",
     entry: {
-        index: path.resolve(ROOT_PATH, 'client/index.jsx'),
-        vendor: ['react', 'react-dom']
+        index: path.resolve(ROOT_PATH, 'client/index.jsx')
     },
     output: {
         path: BUILD_PATH
@@ -41,11 +40,6 @@ module.exports = {
             minChunks: 1, 
             name: true,
             cacheGroups: {
-                commons: {
-                    name: 'common',
-                    priority: 10,
-                    chunks: 'initial'
-                },
                 vendors: {
                     test: /[\\/]node_modules[\\/]/,
                     priority: 20,
@@ -60,9 +54,7 @@ module.exports = {
         new ExtractTextPlugin('[name].bundle.css'),
         new HtmlWebpackPlugin({
             filename:"index.html",
-            template: path.resolve(path.resolve(ROOT_PATH, 'server/template'), 'index.templete.html'), //source
-            chunks: ['index', 'vendor'],
-            hash: true
+            template: path.resolve(path.resolve(ROOT_PATH, 'server/template'), 'index.templete.html')
         })
     ]
 };
