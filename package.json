@@ -1,10 +1,17 @@
 {
-  "name": "test wdd",
+  "name": "table-figure-conversion",
   "version": "1.0.0",
-  "description": "node xlsx",
+  "description": "table-figure-conversion",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "server": "cross-env NODE_ENV=production PORT=2333  pm2 start server --name table-figure-conversion",
+    "start": "cross-env NODE_ENV=development PORT=2333 node server",
+    "build": "cross-env NODE_ENV=production webpack --mode production --config webpack/webpack.config.js --progress"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/WdBly/table-figure-conversion.git"
   },
   "keywords": [
     "node",
@@ -13,7 +20,46 @@
   "author": "wdbly",
   "license": "ISC",
   "dependencies": {
-    "node-xlsx": "^0.12.1",
+    "autoprefixer": "^9.1.5",
+    "axios": "^0.18.0",
+    "babel-cli": "^6.26.0",
+    "babel-core": "^6.26.3",
+    "babel-loader": "^7.0.0",
+    "babel-plugin-add-module-exports": "^0.2.1",
+    "babel-plugin-import": "^1.8.0",
+    "babel-plugin-transform-runtime": "^6.23.0",
+    "babel-preset-env": "^1.7.0",
+    "babel-preset-stage-0": "^6.24.1",
+    "cross-env": "^5.2.0",
+    "css-loader": "^1.0.0",
+    "element-react": "^1.4.24",
+    "element-theme-default": "^1.4.13",
+    "extract-text-webpack-plugin": "^4.0.0-beta.0",
+    "html-loader": "^0.5.5",
+    "html-webpack-plugin": "^3.2.0",
+    "koa": "^2.6.2",
+    "koa-bodyparser": "^4.2.1",
+    "koa-router": "^7.4.0",
+    "koa-static": "^5.0.0",
+    "koa-views": "^6.1.4",
+    "koa2-connect-history-api-fallback": "0.0.6",
+    "koa2-cors": "^2.0.6",
+    "less": "^3.8.1",
+    "less-loader": "^4.1.0",
+    "react": "^16.4.2",
+    "react-dom": "^16.4.2",
+    "style-loader": "^0.23.0",
+    "webpack": "^4.17.1",
     "xlsx": "^0.14.1"
+  },
+  "devDependencies": {
+    "babel-preset-react": "^6.24.1",
+    "babel-preset-react-hmre": "^1.1.1",
+    "eventsource-polyfill": "^0.9.6",
+    "file-loader": "^2.0.0",
+    "koa-webpack-middleware": "^1.0.7",
+    "url-loader": "^1.1.2",
+    "webpack-cli": "^3.1.0",
+    "webpack-merge": "^4.1.4"
   }
 }

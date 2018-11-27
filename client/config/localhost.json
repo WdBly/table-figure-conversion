@@ -1,0 +1,5 @@
+{
+    "API_ROOT" : "http://127.0.0.1:2333",
+    "API_ROOT_SERVER_PRODUCT" : "http://118.25.17.53:2333",
+    "API_ROOT_SERVER_DEVELOP" : "http://118.25.17.53:2333"
+}
