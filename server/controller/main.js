@@ -21,7 +21,6 @@ async function getAllTables(ctx) {
 const mainController = async function (ctx,body) {
 
     var table_names = await getAllTables(ctx);
-   
     table_names = table_names.length && table_names.map(item => {
 
         var workbook =  xl.readFile(`${root}/table/${item}`);
@@ -29,27 +28,45 @@ const mainController = async function (ctx,body) {
         return {
             value: item,
             label: item,
-            children: workbook.SheetNames.map(name => {
-
-                return {
-                    value: name, 
-                    label: name,
-                    row: xl.utils.sheet_to_json(workbook.Sheets[name]).length + 1,
-                    column: [...new Set(Object.keys(workbook.Sheets[name]).filter(item => !/^\!/.test(item)).map(item => item.replace(/\d+$/,"")))],
-                    json: xl.utils.sheet_to_json(workbook.Sheets[name]),
-                    data: workbook.Sheets[name]
-                }
-                
-            }),
-            
+            children: workbook.SheetNames.map(name => ({
+                value: name, 
+                label: name
+            }))
         }         
     })
 
-    ctx.body = responseJson(200,table_names,"success");
+    ctx.body = responseJson(200, table_names, "success");
 }
 
+const sheetController = async function (ctx,body) {
+
+    var workbook =  xl.readFile(`${root}/table/${body[0]}`);
+
+    var data = {
+        row: xl.utils.sheet_to_json(workbook.Sheets[body[1]]).length + 1,
+        column: [...new Set(Object.keys(workbook.Sheets[body[1]]).filter(item => !/^\!/.test(item)).map(item => item.replace(/\d+$/,"")))],
+        json: xl.utils.sheet_to_json(workbook.Sheets[body[1]]),
+        data: workbook.Sheets[body[1]]
+    }
+
+    ctx.body = responseJson(200, data, "success");
+}
+
+
+const loginController = async function (ctx,body) {
+
+    let data = 0;
+    if(body.name === "cxr" && Number(body.password) === 123456){
+        data = 1;
+    }
+    ctx.body = responseJson(200, data, "success");
+}
+
+
 const user_ctrl = {
-    mainController
+    mainController,
+    sheetController,
+    loginController
 }
 
 module.exports = user_ctrl;

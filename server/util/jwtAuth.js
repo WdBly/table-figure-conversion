@@ -7,7 +7,13 @@ async function jwtAuth(ctx, next) {
         await next();
     }else {
 
-        await next();
+        let token = ctx.header.authorization;
+        if(token === "cxrloginsuccess"){
+            await next();
+        }else {
+            ctx.body = {code: 10001, data: null, message: "未登录"};
+        }
+    
     }
 }
 

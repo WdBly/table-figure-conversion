@@ -11,6 +11,11 @@
 .header-box-card {
     margin: 0 25px 25px 0;
 
+    .flex-box {
+        display: flex;
+        justify-content: space-between;
+    }
+
     h2 {
         margin: 0;
     }
@@ -45,13 +50,59 @@
         width: 100%;
         margin-top: 10px;
     }
+
+    .is-landscape {
+        display: flex;
+        align-items: center;
+        margin: 10px 0;
+        padding: 5px 0;
+        color: #363636;
+
+        .max-point {
+            margin-left: 20px;
+
+            span {
+                margin-right: 4px;
+            }
+        }
+    }
 }
 
 .select-table-figure {
     width: 100%;
     margin-top: 15px;
+
+    &.title-row-select {
+        height: 500px;
+    }
 }
 
 .charts-box-card {
     margin: 25px 25px 0 0;
+
+    .figure-box {
+        display: flex;
+        justify-content: space-between;
+    }
+   
+    .column-row-name {
+        width: 250px;
+
+        input {
+            margin-top: 4px;
+        }
+    }
+}
+
+.customer-row-number {
+    display: flex;
+    align-items: center;
+
+    input {
+        margin: 0;
+    }
+
+    button {
+        margin-left: 12px;
+    }
 }
