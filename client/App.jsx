@@ -117,7 +117,7 @@ class AppComponent extends Component {
                         let data = [];
                         for(let j = 0, length = curr_column.length; j < length; j++){
                             if(curr_column[j] !== "num"){
-                                let unit_obj = sheet.data[`${curr_column[i]}${curr_row[j]}`];
+                                let unit_obj = sheet.data[`${curr_column[j]}${curr_row[i]}`];
                                 let output = this.getValue ? unit_obj.v : (/\d+/.exec(unit_obj.w))[0];
                                 data.push(output);
                             }

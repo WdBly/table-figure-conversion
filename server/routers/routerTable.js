@@ -11,7 +11,7 @@ const routerTable = {
             "sheet":{
                 ctrl:"sheetController",
                 method:"POST",
-                need_auth:true
+                need_auth:false
             },
             "login":{
                 ctrl:"loginController",
