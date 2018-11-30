@@ -62,11 +62,29 @@ const loginController = async function (ctx,body) {
     ctx.body = responseJson(200, data, "success");
 }
 
+const uploadController = async function (ctx) {
+    
+    const file = ctx.request.files.file;    // 获取上传文件
+    
+    const reader = fs.createReadStream(file.path);    // 创建可读流
+
+    const ext = file.name.split('.').pop();        // 获取上传文件扩展名
+
+    if(ext === "xlsx"){
+        const upStream = fs.createWriteStream(`${root}/table/${file.name}`); 
+        reader.pipe(upStream); 
+        ctx.body = responseJson(200, null, "success");
+    }else {
+        ctx.body = responseJson(404, null, "上传文件格式有误");
+    }
+}
+
 
 const user_ctrl = {
     mainController,
     sheetController,
-    loginController
+    loginController,
+    uploadController
 }
 
 module.exports = user_ctrl;

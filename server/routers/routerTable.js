@@ -17,6 +17,11 @@ const routerTable = {
                 ctrl:"loginController",
                 method:"POST",
                 need_auth:false
+            },
+            "upload":{
+                ctrl:"uploadController",
+                method:"POST",
+                need_auth:true
             }
         }
     }

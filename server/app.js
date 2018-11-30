@@ -5,6 +5,7 @@ const webpack_config = require("../webpack/webpack.config.js");
 const { devMiddleware, hotMiddleware } = require('koa-webpack-middleware');
 const bodyParser = require("koa-bodyparser");
 const serverStatic = require("koa-static");
+const koaBody = require("koa-body");
 const views = require("koa-views");
 const cors = require("koa2-cors");
 const historyApiFallback = require('koa2-connect-history-api-fallback');
@@ -18,6 +19,13 @@ const compiler = webpack(webpack_config);
 var publicPath = "";
 
 app.use(bodyParser());
+
+app.use(koaBody({
+    multipart: true,
+    formidable: {
+        maxFileSize: 2000*1024*1024  
+    }
+}));
 
 if(process.env.NODE_ENV === "development") {
     app.use(historyApiFallback());

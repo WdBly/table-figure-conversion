@@ -16,6 +16,15 @@
         justify-content: space-between;
     }
 
+    .file-upload-btn {
+        display: flex;
+        align-items: center;
+
+        button {
+            margin: 0 10px;
+        }
+    }
+
     h2 {
         margin: 0;
     }
@@ -83,6 +92,10 @@
     .figure-box {
         display: flex;
         justify-content: space-between;
+
+        .el-tabs--border-card {
+            width: 346px;
+        }
     }
    
     .column-row-name {
@@ -104,5 +117,29 @@
 
     button {
         margin-left: 12px;
+    }
+}
+
+.color-picker-box {
+    height: 280px;
+}
+
+.curr-select-color {
+    border: 1px dashed #363636;
+    display: flex;
+    flex-wrap: wrap;
+    position: relative;
+    top: -223px;
+
+    h3 {
+        width: 100%;
+        text-indent: 10px;
+    }
+
+    div{
+        width: 50px;
+        height: 50px;
+        cursor: pointer;
+        margin: 10px;
     }
 }
